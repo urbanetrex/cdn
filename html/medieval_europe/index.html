@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title>Medieval Europe - Learning Journals</title>
     <style>
-      img {
+      body {
+
+      }
+      /*cover*/
+      img.cover {
         top: 0;
         width: 50%;
         height: 50%;
@@ -13,14 +17,38 @@
       .page {
         background:rgb(238,238,238);
         padding:10px;
-        width:100vw; height:100vh;
+        width: calc(100vw - 40px);
+        height: calc(100vh - 30px);
         border: 2px solid black;
       }
+      /*cover alignment*/
       .page1  {
         display: flex;
         align-items: center;
         display: flex;
         flex-direction: column;
+      }
+
+      /*content*/
+
+      /*page2*/
+      .page2-up {
+        height: 50%;
+        border-bottom: 1px solid #ccc;
+      }
+      .page2-down {
+        display: flex;
+        border-top: 1px solid #ccc;
+      }
+      .page2-down-1, .page2-down-2, .page2-down-3 {
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 50%;
+        top: 50%;
+        width: 32%;
+        padding: 10px;
+        border: 1px dotted #ccc;
       }
     </style>
   </head>
@@ -28,23 +56,37 @@
     <!-- https://raw.githubusercontent.com/urbanetrex/cdn/main/html/medieval_europe/covers/cover.png -->
     <!-- page1 -->
     <div class="page page1">
-      <img src="https://raw.githubusercontent.com/urbanetrex/cdn/main/html/medieval_europe/covers/cover.png">
+      <img src="covers/cover.png" class="cover">
       <br>
       <h1>Medieval Europe</h1>
+      <h2>Learning Journal</h2>
     </div>
     <div class="page">
-      <div>
+      <div class="page2-up">
         <h2>The Roman Empire</h2>
+        <img src="source/source_1.drawio.svg" class="page2-img1">
       </div>
-      <div>
-        <div>
-
+      <div class="page2-down">
+        <div class="page2-down-1">
+          <h3>Changes</h3>
+          <ul>
+            <li>Structures start to fall apart, because there is no money, because there is no central government</li>
+            <li>Less trade</li>
+            <li>Less travel</li>
+            <li>No one learning</li>
+          </ul>
         </div>
-        <div>
-
+        <div class="page2-down-2">
+          <h3>Not-So-Dark</h3>
+          <p>
+            The "<i>Dark Ages</i>" was named by people from the Renaissence.
+          </p>
+          <p>
+            They looked down on the Middle Ages.
+          </p>
         </div>
-        <div>
-
+        <div class="page2-down-3">
+          <h3>New Nations</h3>
         </div>
       </div>
     </div>
