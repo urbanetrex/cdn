@@ -5,29 +5,36 @@
     <title>Medieval Europe - Learning Journals</title>
     <style>
       body {
-        padding:0;
-        margin:0;
+        padding: 30px;
+        margin: 0;
       }
       /*cover*/
-      img.cover {
+      img.cover_img {
         top: 0;
         width: 50%;
         height: 50%;
         object-fit: contain;
       }
       .page {
-        background:rgb(238,238,238);
-        padding:10px;
+        padding: 10px;
         width: calc(100vw - 40px);
         height: calc(100vh - 30px);
-        border: 2px solid black;
       }
       /*cover alignment*/
-      .page1  {
+      .cover {
         display: flex;
         align-items: center;
-        display: flex;
         flex-direction: column;
+        padding: 10px;
+        width: calc(100vw - 70px);
+        height: calc(100vh - 30px);
+      }
+
+      /*contents*/
+      .contents {
+        padding: 10px;
+        width: calc(100vw - 70px);
+        height: calc(100vh - 30px);
       }
 
       /*content*/
@@ -35,7 +42,6 @@
       /*page2*/
       .page2-up {
         height: 50%;
-        border-bottom: 1px solid #ccc;
       }
       .page2-img1 {
         background: transparent;
@@ -43,8 +49,10 @@
       .page2-down {
         display: flex;
       }
-      .page2-down-1, .page2-down-2, .page2-down-3 {
-        display:flex;
+      .page2-down-1,
+      .page2-down-2,
+      .page2-down-3 {
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         height: 50%;
@@ -64,23 +72,34 @@
     </style>
   </head>
   <body>
-    <!-- https://raw.githubusercontent.com/urbanetrex/cdn/main/html/medieval_europe/covers/cover.png -->
-    <!-- page1 -->
-    <div class="page page1">
-      <img src="covers/cover.png" class="cover">
+    <div class="page cover">
+      <img src="covers/cover.png" class="cover_img">
       <br>
       <h1>Medieval Europe</h1>
       <h2>Learning Journals</h2>
     </div>
+    <hr>
 
-    <!--page2-->
+    <div class="page contents">
+      <h2>Contents</h2>
+      <ul>
+        <li>The Roman Empire</li>
+        <li>The Dark Ages</li>
+      </ul>
+    </div>
+    <hr>
+
     <div class="page">
       <div class="page2-up">
         <h2>The Roman Empire</h2>
         <img src="source/source_1.drawio.svg" class="page2-img1">
-      </div>
+        <hr>
 
-      <h2> The <span class="darkfont">Dark</span> Ages <span class="time">500CE-800CE</span></h2> 
+        <h2>
+          The <span class="darkfont">Dark</span> Ages <span class="time">500CE-800CE</span>
+        </h2>
+      </div>
+      
       <div class="page2-down">
         <div class="page2-down-1">
           <h3>Changes</h3>
@@ -104,7 +123,6 @@
           <h3>New Nations</h3>
         </div>
       </div>
-      <p class="page_number">1</p>
     </div>
   </body>
 </html>

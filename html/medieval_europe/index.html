@@ -5,9 +5,14 @@
     <title>Medieval Europe - Learning Journals</title>
     <style>
       body {
-        padding: 30px;
-        margin: 0;
+        padding:0;
+        margin:0;
       }
+
+      hr.divider {
+        border-top: 1px dotted grey;
+      }
+
       /*cover*/
       img.cover_img {
         top: 0;
@@ -15,41 +20,37 @@
         height: 50%;
         object-fit: contain;
       }
-      /*.page {
-        background: rgb(238, 238, 238);
-        padding: 10px;
+      .page {
+        padding:10px;
         width: calc(100vw - 40px);
         height: calc(100vh - 30px);
-        border: 2px solid black;
-      }*/
+      }
       /*cover alignment*/
-      .cover {
+      .cover  {
         display: flex;
         align-items: center;
         display: flex;
         flex-direction: column;
-        padding: 10px;
-        width: calc(100vw - 70px);
-        height: calc(100vh - 30px);
+      }
+
+      .page_number {
+        text-align: center;
       }
 
       /*content*/
 
-      /*page2*/
-      .page2-up {
+      /*page1*/
+      .page1-up {
         height: 50%;
-        border-bottom: 1px solid #ccc;
       }
-      .page2-img1 {
+      .page1-img1 {
         background: transparent;
       }
-      .page2-down {
+      .page1-down {
         display: flex;
       }
-      .page2-down-1,
-      .page2-down-2,
-      .page2-down-3 {
-        display: flex;
+      .page1-down-1, .page1-down-2, .page1-down-3 {
+        display:flex;
         flex-direction: row;
         flex-wrap: wrap;
         height: 50%;
@@ -69,48 +70,57 @@
     </style>
   </head>
   <body>
-    <div class="cover">
+    <!-- cover -->
+    <div class="page cover" id="cover">
       <img src="covers/cover.png" class="cover_img">
       <br>
       <h1>Medieval Europe</h1>
       <h2>Learning Journals</h2>
     </div>
+
     <hr>
 
-    <div class="contents">
-
+    <div class="page contents">
+      <h2 id="contents">Contents</h2>
     </div>
-    <br>
 
-    <h2>The Roman Empire</h2>
-    <img src="source/source_1.drawio.svg" class="page2-img1">
     <hr>
 
-    <h2>
-      The <span class="darkfont">Dark</span> Ages <span class="time">500CE-800CE</span>
-    </h2>
-    <div class="page2-down">
-      <div class="page2-down-1">
-        <h3>Changes</h3>
-        <ul>
-          <li>Structures start to fall apart, because there is no money, because there is no central government</li>
-          <li>Less trade</li>
-          <li>Less travel</li>
-          <li>No one learning</li>
-        </ul>
+    <!--page1-->
+    <div class="page" id="page1">
+      <div class="page1-up">
+        <h2 id="the-roman-empire">The Roman Empire</h2>
+        <img src="source/source_1.drawio.svg" class="page1-img1">
       </div>
-      <div class="page2-down-2">
-        <h3>Not-So-Dark</h3>
-        <p>
-          The "<i>Dark Ages</i>" was named by people from the Renaissance.
-        </p>
-        <p>
-          They looked down on the Middle Ages.
-        </p>
+
+      <hr class="divider">
+
+      <h2 id="the-dark-ages"> The <span class="darkfont">Dark</span> Ages <span class="time">500CE-800CE</span></h2> 
+      <div class="page1-down">
+        <div class="page1-down-1">
+          <h3>Changes</h3>
+          <ul>
+            <li>Structures start to fall apart, because there is no money, because there is no central government</li>
+            <li>Less trade</li>
+            <li>Less travel</li>
+            <li>No one learning</li>
+          </ul>
+        </div>
+        <div class="page1-down-2">
+          <h3>Not-So-Dark</h3>
+          <p>
+            The "<i>Dark Ages</i>" was named by people from the Renaissance.
+          </p>
+          <p>
+            They looked down on the Middle Ages.
+          </p>
+        </div>
+        <div class="page1-down-3">
+          <h3>New Nations</h3>
+        </div>
       </div>
-      <div class="page2-down-3">
-        <h3>New Nations</h3>
-      </div>
+      <p class="page_number">1</p>
     </div>
+    <hr>
   </body>
 </html>
