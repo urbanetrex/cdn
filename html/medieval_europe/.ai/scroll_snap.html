@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll-Snap Example</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    .section {
+      scroll-snap-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .one { background: red; }
+    .two { background: blue; }
+    .three { background: green; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section one">Page 1</div>
+    <div class="section two">Page 2</div>
+    <div class="section three">Page 3</div>
+  </div>
+</body>
+</html>
