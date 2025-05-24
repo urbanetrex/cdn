@@ -1,4 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    Loading
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <label>
+            <input type="checkbox" id="highlightToggle" /> Highlight fun facts
+        </label>
+          
+        <pre id="output" style="white-space: pre-wrap;"></pre>
+          
+        <script>
+            const highlightToggle = document.getElementById('highlightToggle');
+            const output = document.getElementById('output');
+          
+            // TODO: Replace this with your file path or URL
+            const txtFilePath = 'diaries/small/info.txt';
+          
+            let currentContent = '';
+          
+            // Load file content from provided path
+            fetch(txtFilePath)
+              .then(response => {
+                if (!response.ok) throw new Error('Failed to load file: ' + response.statusText);
+                return response.text();
+              })
+              .then(text => {
+                currentContent = text;
+                renderContent();
+              })
+              .catch(err => {
+                output.textContent = 'Error loading file: ' + err.message;
+              });
+          
+            highlightToggle.addEventListener('change', renderContent);
+          
+            function renderContent() {
+              const showHighlights = highlightToggle.checked;
+          
+              let content = currentContent
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+          
+              if (showHighlights) {
+                content = content.replace(/#(.*?)#/g, '<span style="background-color: yellow; font-weight: bold;">$1</span>');
+              } else {
+                content = content.replace(/#(.*?)#/g, '$1');
+              }
+          
+              output.innerHTML = content;
+            }
+        </script>          
+    </body>
 </html>
