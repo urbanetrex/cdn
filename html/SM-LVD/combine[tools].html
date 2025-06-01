@@ -1,97 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>The ULTIMATE Spelling Rule Applier!!!</title>
-        <script>
-            function vcJudge() {
-                const c = document.getElementById('myInput').value;
-                var returnValue;
-                if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') {
-                    returnValue = "vowel";
-                } else {
-                    returnValue = "consonant";
-                }
-                // edit the answer1 element to show the result
-                document.getElementById('answer1').innerHTML = "The character <strong>" + c + "</strong> is a <strong>" + returnValue + "</strong>.";
-                return returnValue;
+<head>
+    <meta charset="UTF-8">
+    <title>The ULTIMATE Spelling Rule Applier!!!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        body {
+            background-image: url('./cloud2a.jpg');
+            background-repeat: repeat;
+            background-size: 200px;
+            background-attachment: fixed;
+            background-color: #dfe9f3;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            color: #222;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* background: rgba(255, 255, 255, 0.5); optional veil */
+            z-index: -1;
+        }
+
+
+
+        header {
+            background: linear-gradient(to right, lightblue, lawngreen, gold, lightcoral);
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        section {
+            border: 10px solid;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .fire { border-color: red; background-color: lightcoral; color: white; }
+        .sun { border-color: gold; background-color: lemonchiffon; color: black; }
+        .forest { border-color: forestgreen; background-color: honeydew; color: darkgreen; }
+        .space { border-color: navy; background-color: rgb(65, 65, 147); color: white; }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        // Core validation
+        function isLetterOnly(s) {
+            return /^[a-zA-Z]+$/.test(s);
+        }
+
+        function isValidCharInput(id) {
+            const val = document.getElementById(id).value;
+            return val.length === 1 && isLetterOnly(val);
+        }
+
+        function show(id, msg) {
+            document.getElementById(id).innerHTML = msg;
+        }
+
+        // Vowel or consonant classification
+        function vcJudge(c) {
+            return ['a', 'e', 'i', 'o', 'u'].includes(c.toLowerCase()) ? 'v' : 'c';
+        }
+
+        function analyzeChar() {
+            const input = document.getElementById('charInput').value;
+            if (!isValidCharInput('charInput')) {
+                show('charResult', "Please enter a single alphabetic letter.");
+                return;
             }
 
-            function vcStr(s) {
-                let result = "";
-                for (let i = 0; i < s.length - 1; i++) {
+            const lower = input.toLowerCase();
+            const type = vcJudge(lower) === 'v' ? "vowel" : "consonant";
+
+            show('charResult', `The character <strong>${lower}</strong> is a <strong>${type}</strong>.`);
+        }
+
+        function analyzeString() {
+            const input = document.getElementById('vcStringInput').value;
+            if (!isLetterOnly(input)) {
+                show('vcResult1', "Please enter letters only.");
+                show('vcResult2', "");
+                return;
+            }
+
+            const s = input.toLowerCase();
+            let result = "";
+            const last = s.length - 1;
+
+            for (let i = 0; i <= last; i++) {
+                if (i === last) {
+                    if (s[i] === 'x') result += "c(+c)";
+                    else if (['y', 'w'].includes(s[i])) result += "v";
+                    else result += vcJudge(s[i]);
+                } else {
                     result += vcJudge(s[i]);
                 }
-                switch (s[s.length - 1]) {
-                    case 'a': case 'e': case 'i': case 'o': case 'u': case 'y': case 'w':
-                        result += "v";
-                        break;
-                    default:
-                        result += "c";
-                        break;
-                }
-                return result;
             }
 
-            function spellingCombine(s1, s2) {
-                if (s1[s1.length - 1] === 'e' && vcJudge(s2[0]) === 'v') {
-                    return s1.slice(0, -1) + s2;
-                }
-                if (s1.length < 5 && vcJudge(s1[s1.length - 1]) === 'c' && vcJudge(s2[0]) === 'v' &&
-                    vcStr(s1).slice(-3) === "cvc" && s1[s1.length - 1] !== 'x') {
-                    return s1 + s1[s1.length - 1] + s2;
-                }
-                if (s1[s1.length - 1] === 'y' && vcJudge(s1[s1.length - 2]) === 'c' && s2[0] !== 'i') {
-                    return s1.slice(0, -1) + 'i' + s2;
-                }
-                return s1 + s2;
+            show('vcResult1', `The V/C string for <strong>${s}</strong> is: <strong>${result}</strong>.`);
+            
+            if (['y', 'w'].includes(s[last])) {
+                show('vcResult2', `The last character is a vowel (y and w are vowels at the end of a morphograph).`);
+            } else if (s[last] === 'x') {
+                show('vcResult2', `The last character is a consonant (x sounds like two consonants).`);
+            } else {
+                show('vcResult2', "");
+            }
+        }
+
+        function combineMorphographs() {
+            const s1 = document.getElementById('morph1').value;
+            const s2 = document.getElementById('morph2').value;
+
+            if (!isLetterOnly(s1) || !isLetterOnly(s2)) {
+                show('combineResult', "Please enter valid letter strings.");
+                return;
             }
 
-            function plural(s) {
-                if (s[s.length - 1] === 's' || s[s.length - 1] === 'x' || s[s.length - 1] === 'z') {
-                    return s + "es";
-                }
-                if (s[s.length - 1] === 'h' && (s[s.length - 2] === 'c' || s[s.length - 2] === 's')) {
-                    return s + "es";
-                }
-                if (s[s.length - 1] === 'y' && vcJudge(s[s.length - 2]) === 'c') {
-                    return s.slice(0, -1) + "ies";
-                }
-                return s + "s";
-            }
-        </script>            
-    </head>
-    <body>
-        <div style="padding: 20px;
-            background-image: linear-gradient(to left, lightblue, lawngreen, gold, lightcoral);
-            border: 100px ridge rgba()">
-            <h1>The ULTIMATE Spelling Rule Applier!</h1>
-        </div>
+            const vc1 = getVCString(s1);
+            let result = s1 + s2;
+            let rule = "";
 
-        <div style="border: 100px ridge red; background-color: lightcoral; color: white; height: 50vh; padding: 10px;">
-            <h2 style="margin: 0;">🔥 Prep prepares!</h2>
-            <h3>Character detection -- Vowel or Consonant?</h3>
-            <input type="text" id="myInput" maxlength="1">
-            <button onclick="readInput()">Read It</button>
-            <h2 id="answer1">
-                
-            </h2>
-        </div>    
-        
-        <div style="border: 100px ridge gold; background-color: lemonchiffon; color: black; height: 50vh; padding: 10px;">
-            <h2 style="margin: 0;">🌞 Golden Morning</h2>
-            <p>Sunrise vibes</p>
-        </div>
-        
-        <div style="border: 100px ridge forestgreen; background-color: honeydew; color: darkgreen; height: 50vh; padding: 10px;">
-            <h2 style="margin: 0;">🌿 Fresh Bloom</h2>
-            <p>Lawn and dew</p>
-        </div>
-        
-        <div style="border: 100px ridge navy; background-color: midnightblue; color: white; height: 50vh; padding: 10px;">
-            <h2 style="margin: 0;">🌌 Starry Night</h2>
-            <p>Night sleep</p>
-        </div>
-        
-    </body>
+            if (s1.endsWith('e') && vcJudge(s2[0]) === 'v') {
+                result = s1.slice(0, -1) + s2;
+                rule = "Drop the final 'e' when followed by a vowel morphograph.";
+            } else if (
+                s1.length < 5 &&
+                vcJudge(s1.slice(-1)) === 'c' &&
+                vcJudge(s2[0]) === 'v' &&
+                vc1.endsWith("cvc") &&
+                !s1.endsWith('x')
+            ) {
+                result = s1 + s1.slice(-1) + s2;
+                rule = "Double the final consonant for short CVC words followed by a vowel.";
+            } else if (
+                s1.endsWith('y') &&
+                vcJudge(s1.slice(-2, -1)) === 'c' &&
+                s2[0] !== 'i'
+            ) {
+                result = s1.slice(0, -1) + 'i' + s2;
+                rule = "Change y to i when preceded by a consonant and not followed by 'i'.";
+            }
+
+            show('combineResult', `Combined: <strong>${result}</strong>`);
+            show('combineRule', rule);
+        }
+
+        function getVCString(s) {
+            s = s.toLowerCase();
+            let vc = "";
+            for (let i = 0; i < s.length - 1; i++) {
+                vc += vcJudge(s[i]);
+            }
+            const last = s.slice(-1);
+            if (['a','e','i','o','u','y','w'].includes(last)) vc += 'v';
+            else vc += 'c';
+            return vc;
+        }
+
+        function pluralize() {
+
+
+            const word = document.getElementById('pluralInput').value.toLowerCase();
+            if (!isLetterOnly(word)) {
+                show('pluralResult', "Please enter letters only.");
+                show('pluralRule', "");
+                return;
+            }
+
+            let result = "", rule = "";
+
+            if (['s','x','z','o'].includes(word.slice(-1))) {
+                result = word + "es";
+                rule = "Add 'es' to words ending in s, x, z, or o.";
+            } else if (word.endsWith('ch') || word.endsWith('sh')) {
+                result = word + "es";
+                rule = "Add 'es' to words ending in 'ch' or 'sh'.";
+            } else if (word.endsWith('y') && vcJudge(word.slice(-2, -1)) === 'c') {
+                result = word.slice(0, -1) + "ies";
+                rule = "Consonant + y becomes 'ies'.";
+            } else {
+                result = word + "s";
+            }
+
+            show('pluralResult', `Plural: <strong>${result}</strong>`);
+            show('pluralRule', rule);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>The ULTIMATE Spelling Rule Applier!!!</h1>
+    </header>
+
+    <section class="fire" aria-label="Character Classification">
+        <h2>🔥 Prep Prepares!</h2>
+        <p>Character detection – Vowel or Consonant?</p>
+        <input type="text" id="charInput" maxlength="1" placeholder="Enter a letter">
+        <button onclick="analyzeChar()">Analyze</button>
+        <div id="charResult" class="result"></div>
+    </section>
+
+    <section class="sun" aria-label="Vowel/Consonant Pattern">
+        <h2>🌞 Rocketin' Ahead</h2>
+        <p>Vowel/Consonant String Identifier</p>
+        <input type="text" id="vcStringInput" placeholder="Enter a string">
+        <button onclick="analyzeString()">Get Pattern</button>
+        <div id="vcResult1" class="result"></div>
+        <div id="vcResult2" class="result"></div>
+    </section>
+
+    <section class="forest" aria-label="Morphograph Combiner">
+        <h2>🌿 Be an Expert</h2>
+        <p>Combine Two Morphographs</p>
+        <input type="text" id="morph1" placeholder="First morphograph">
+        <input type="text" id="morph2" placeholder="Second morphograph">
+        <button onclick="combineMorphographs()">Combine</button>
+        <div id="combineResult" class="result"></div>
+        <div id="combineRule" class="result"></div>
+    </section>
+
+    <section class="space" aria-label="Pluralization">
+        <h2>🌌 Go Pro!</h2>
+        <p>Pluralize a Word</p>
+        <input type="text" id="pluralInput" placeholder="Enter a word">
+        <button onclick="pluralize()">Pluralize</button>
+        <div id="pluralResult" class="result"></div>
+        <div id="pluralRule" class="result"></div>
+    </section>
+</body>
 </html>
