@@ -1,0 +1,110 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-repeat: repeat;
+    background-size: 200px;
+    background-attachment: fixed;
+    background-color: #dfe9f3;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* background: rgba(255, 255, 255, 0.5); optional veil */
+    z-index: -1;
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, lightblue, lawngreen, gold, lightcoral);
+    padding: 30px;
+}
+
+header .home {
+    align-self: flex-start;
+    margin-top: 0;       /* Remove default spacing above */
+    margin-bottom: 10px; /* Keep some space below */
+    font-size: 14px;
+    text-align: left;
+    color: black;
+    border: 4px solid darkseagreen;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+section {
+    border: 10px solid;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.fire { border-color: red; background-color: lightcoral; color: white; }
+.sun { border-color: gold; background-color: lemonchiffon; color: black; }
+.forest { border-color: forestgreen; background-color: honeydew; color: darkgreen; }
+.space { border-color: navy; background-color: rgb(65, 65, 147); color: white; }
+/*links should be colored too*/
+.fire a,
+.fire a:visited {
+    color: white;
+}
+
+.sun a,
+.sun a:visited {
+    color: black;
+}
+
+.forest a,
+.forest a:visited {
+    color: darkgreen;
+}
+
+.space a,
+.space a:visited {
+    color: white;
+}
+
+/* Optional hover for clarity */
+.fire a:hover,
+.sun a:hover,
+.forest a:hover,
+.space a:hover {
+    text-decoration: underline;
+}
+
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+}

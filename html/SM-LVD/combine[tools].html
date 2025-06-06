@@ -3,75 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>The ULTIMATE Spelling Rule Applier!!!</title>
+    
+    <link rel="stylesheet" href="./sources/stylesheet.css">
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-image: url('./cloud2a.jpg');
-            background-repeat: repeat;
-            background-size: 200px;
-            background-attachment: fixed;
-            background-color: #dfe9f3;
-            margin: 0;
-            padding: 0;
-            color: #222;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            /* background: rgba(255, 255, 255, 0.5); optional veil */
-            z-index: -1;
-        }
-
-
-
-        header {
-            background: linear-gradient(to right, lightblue, lawngreen, gold, lightcoral);
-            padding: 30px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        section {
-            border: 10px solid;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 20px;
-        }
-
-        section h2 {
-            margin-top: 0;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            margin: 5px;
-            font-size: 1em;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 5px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        .fire { border-color: red; background-color: lightcoral; color: white; }
-        .sun { border-color: gold; background-color: lemonchiffon; color: black; }
-        .forest { border-color: forestgreen; background-color: honeydew; color: darkgreen; }
-        .space { border-color: navy; background-color: rgb(65, 65, 147); color: white; }
-
-        .result {
-            margin-top: 10px;
-            font-weight: bold;
+            background-image: url('./sources/cloud2a.jpg');
         }
     </style>
+
     <script>
         // Core validation
         function isLetterOnly(s) {
@@ -297,7 +236,7 @@
 
             if (exclusives.hasOwnProperty(word)) {
                 result = exclusives[word];
-                rule = `Special case: The plural of <strong>${word}</strong> is <strong>${result}</strong>.`;
+                rule = `Special case: The plural of <strong>${word}</strong> is <strong>${result}</strong>. <br> <a href="./exclusives/plurals.html">See more exceptions</a>`;
             } else if (['s','x','z','o'].includes(word.slice(-1))) {
                 result = word + "es";
                 rule = "Add 'es' to words ending in s, x, z, or o.";
@@ -326,7 +265,7 @@
 <body>
     <header>
         <h1>The ULTIMATE Spelling Rule Applier!!!</h1>
-        <h6>Note: This needs some more upgrading.</h6>
+        <h6>Note: Code has been updated, but still needs more improvements.</h6>
     </header>
 
     <section class="fire" aria-label="Character Classification">
@@ -364,7 +303,5 @@
         <div id="pluralResult" class="result"></div>
         <div id="pluralRule" class="result"></div>
     </section>
-
-    
 </body>
 </html>
