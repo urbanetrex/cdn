@@ -59,6 +59,12 @@ export const plural_exclusives = {
     "barracuda": "barracuda",
     "tuna": "tuna",
     "plankton": "plankton",
+    "air": "air",
+    "bread": "bread",
+    "water": "water",
+    "coral": "coral",
+    "algae": "algae",
+    "data": "data",
     // else exceptions
     "foot": "feet",
     "tooth": "teeth",
