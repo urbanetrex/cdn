@@ -20,117 +20,48 @@
         <section class="fire">
             <h2>🔥f/fe Exceptions</h2>
             <ul>
-                <li>roof - roofs</li>
-                <li>chief - chiefs</li>
-                <li>belief - beliefs</li>
-                <li>proof - proofs</li>
-                <li>cliff - cliffs</li>
-                <li>chef - chefs</li>
-                <li>safe - safes</li>
-                <li>gulf - gulfs</li>
-                <li>handkerchief - handkerchiefs</li>
-                <li>handcuff - handcuffs</li>
-                <li>hoof - hoofs</li>
-                <li>cuff - cuffs</li>
-                <li>puff - puffs</li>
-                <li>sniff - sniffs</li>
-                <li>stuff - stuffs</li>
-                <li>turf - turfs</li>
-                <li>staff - staffs</li>
-                <li>beef - beefs</li>
-                <li>grief - griefs</li>
+                
             </ul>
         </section>
 
         <section class="sun">
             <h2>🌞 o Exceptions</h2>
             <ul>
-                <li>photo - photos</li>
-                <li>piano - pianos</li>
-                <li>video - videos</li>
-                <li>radio - radios</li>
-                <li>zoo - zoos</li>
-                <li>kilo - kilos</li>
-                <li>solo - solos</li>
-                <li>cello - cellos</li>
-                <li>bamboo - bamboos</li>
-                <li>soprano - sopranos</li>
-                <li>canto - cantos</li>
-                <li>kangaroo - kangaroos</li>
-                <li>tattoo - tattoos</li>
-                <li>studio - studios</li>
-                <li>casino - casinos</li>
+                
             </ul>
         </section>
 
         <section class="forest">
             <h2>🌿 Plural as same as singular</h2>
             <ul>
-                <li>deer - deer</li>
-                <li>fish - fish</li>
-                <li>sheep - sheep</li>
-                <li>moose - moose</li>
-                <li>species - species</li>
-                <li>series - series</li>
-                <li>aircraft - aircraft</li>
-                <li>crossroads - crossroads</li>
-                <li>means - means</li>
-                <li>news - news</li>
-                <li>bison - bison</li>
-                <li>salmon - salmon</li>
-                <li>trout - trout</li>
-                <li>swine - swine</li>
-                <li>cattle - cattle</li>
-                <li>pike - pike</li>
-                <li>carp - carp</li>
-                <li>shrimp - shrimp</li>
-                <li>squid - squid</li>
-                <li>cod - cod</li>
-                <li>barracuda - barracuda</li>
-                <li>tuna - tuna</li>
-                <li>plankton - plankton</li>
-                <li>coral - coral</li>
-                <li>algae - algae</li>
-                <li>air - air</li>
-                <li>bread - bread</li>
-                <li>data - data</li>
-                <li>water - water</li>
+                
             </ul>
         </section>
 
         <section class="space">
             <h2>🌌 Other exceptions</h2>
             <ul>
-                <li>foot - feet</li>
-                <li>tooth - teeth</li>
-                <li>mouse - mice</li>
-                <li>louse - lice</li>
-                <li>person - people</li>
-                <li>child - children</li>
-                <li>ox - oxen</li>
-                <li>man - men</li>
-                <li>woman - women</li>
-                <li>goose - geese</li>
-                <li>die - dice</li>
-                <li>cactus - cacti</li>
-                <li>fungus - fungi</li>
-                <li>nucleus - nuclei</li>
-                <li>focus - foci</li>
-                <li>radius - radii</li>
-                <li>stimulus - stimuli</li>
-                <li>analysis - analyses</li>
-                <li>crisis - crises</li>
-                <li>thesis - theses</li>
-                <li>diagnosis - diagnoses</li>
-                <li>oasis - oases</li>
-                <li>basis - bases</li>
-                <li>appendix - appendices</li>
-                <li>index - indices</li>
-                <li>matrix - matrices</li>
-                <li>vertex - vertices</li>
-                <li>vortex - vortices</li>
-                <li>axis - axes</li>
+                
             </ul>
         </section>
+
+        <script type="module">
+            import { plural_exclusives } from '../sources/pluralJS/exclusives.js';
+
+            const sectionsMap = {
+                "f / fe exceptions": document.querySelector('.fire ul'),
+                "o exceptions": document.querySelector('.sun ul'),
+                "plural as same as singular": document.querySelector('.forest ul'),
+                "else exceptions": document.querySelector('.space ul')
+            };
+
+            for (const [category, ulElement] of Object.entries(sectionsMap)) {
+                if (!ulElement) continue;
+                const listItems = Object.entries(plural_exclusives[category])
+                    .map(([word, plural]) => `<li>${word} → <strong>${plural}</strong></li>`)
+                    .join('');
+                ulElement.innerHTML = listItems;
+            }
+        </script>
     </body>
 </html>

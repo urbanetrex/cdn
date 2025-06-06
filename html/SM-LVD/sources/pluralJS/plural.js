@@ -11,11 +11,13 @@ function endsWithAny(word, suffixes) {
 export function pluralizeWord(word) {
     const lowerWord = word.toLowerCase();
 
-    if (plural_exclusives.hasOwnProperty(lowerWord)) {
-        return {
-            plural: plural_exclusives[lowerWord],
-            rule: `Special case: <strong>${word}</strong> → <strong>${plural_exclusives[lowerWord]}</strong>.<br> <a href="./exclusives/plurals.html">See more exceptions</a>`
-        };
+    for (const category in plural_exclusives) {
+        if (plural_exclusives[category].hasOwnProperty(lowerWord)) {
+            return {
+                plural: plural_exclusives[category][lowerWord],
+                rule: `Special case: <strong>${word}</strong> → <strong>${plural_exclusives[category][lowerWord]}</strong>.<br> <a href="./exclusives/plurals.html">See more exceptions</a>`
+            };
+        }
     }
 
     if (endsWithAny(lowerWord, ['s', 'x', 'z', 'o'])) {
