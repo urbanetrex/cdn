@@ -9,18 +9,36 @@ function addEnterKeyListener(inputId, handler) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Button click listeners
+    // Existing listeners
     document.getElementById('analyze').addEventListener('click', analyzeChar);
     document.getElementById('pattern').addEventListener('click', analyzeString);
     document.getElementById('combine').addEventListener('click', combineMorphographs);
     document.getElementById('pluralize').addEventListener('click', pluralize);
 
-    // Input enter-key listeners
+    // Input enter-key listeners for triggering functions
     addEnterKeyListener('charInput', analyzeChar);
     addEnterKeyListener('vcStringInput', analyzeString);
     addEnterKeyListener('morph2', combineMorphographs);
     addEnterKeyListener('pluralInput', pluralize);
+
+    // New: when Enter pressed in morph1, focus morph2 input
+    const morph1Input = document.getElementById('morph1');
+    const morph2Input = document.getElementById('morph2');
+
+    morph1Input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            event.preventDefault();
+            if (morph2Input) {
+                morph2Input.focus();
+                // Optional: select all text in morph2 for easy overwrite
+                morph2Input.select();
+            } else {
+                console.warn('morph2 input not found');
+            }
+        }
+    });
 });
+
 
 // Core validation
 function isLetterOnly(s) {
