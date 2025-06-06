@@ -1,9 +1,25 @@
 // Event listeners for buttons
+function addEnterKeyListener(inputId, handler) {
+    document.getElementById(inputId).addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            event.preventDefault();  // Prevent form submission or default action
+            handler();
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Button click listeners
     document.getElementById('analyze').addEventListener('click', analyzeChar);
     document.getElementById('pattern').addEventListener('click', analyzeString);
     document.getElementById('combine').addEventListener('click', combineMorphographs);
     document.getElementById('pluralize').addEventListener('click', pluralize);
+
+    // Input enter-key listeners
+    addEnterKeyListener('charInput', analyzeChar);
+    addEnterKeyListener('vcStringInput', analyzeString);
+    addEnterKeyListener('morph2', combineMorphographs);
+    addEnterKeyListener('pluralInput', pluralize);
 });
 
 // Core validation
@@ -72,8 +88,8 @@ function analyzeString() {
 }
 
 function combineMorphographs() {
-    const s1 = document.getElementById('morph1').value;
-    const s2 = document.getElementById('morph2').value;
+    let s1 = document.getElementById('morph1').value;
+    let s2 = document.getElementById('morph2').value;
 
     if (!isLetterOnly(s1) || !isLetterOnly(s2)) {
         show('combineResult', "Please enter valid letter strings.");
