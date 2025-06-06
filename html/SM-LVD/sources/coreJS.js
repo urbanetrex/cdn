@@ -140,133 +140,19 @@ function getVCString(s) {
     return vc;
 }
 
-function pluralize() {
-    const exclusives = {
-        // f / fe exceptions
-        "roof": "roofs",
-        "chief": "chiefs",
-        "belief": "beliefs",
-        "proof": "proofs",
-        "cliff": "cliffs",
-        "chef": "chefs",
-        "safe": "safes",
-        "gulf": "gulfs",
-        "handkerchief": "handkerchiefs",
-        "handcuff": "handcuffs",
-        "hoof": "hoofs",
-        "cuff": "cuffs",
-        "puff": "puffs",
-        "sniff": "sniffs",
-        "stuff": "stuffs",
-        "turf": "turfs",
-        "staff": "staffs",
-        "beef": "beefs",
-        "grief": "griefs",
-        //  o exceptions
-        "photo": "photos",
-        "piano": "pianos",
-        "video": "videos",
-        "radio": "radios",
-        "zoo": "zoos",
-        "kilo": "kilos",
-        "solo": "solos",
-        "cello": "cellos",
-        "bamboo": "bamboos",
-        "soprano": "sopranos",
-        "canto": "cantos",
-        "kangaroo": "kangaroos",
-        "tattoo": "tattoos",
-        "studio": "studios",
-        "casino": "casinos",
-        // plural as same as singular
-        "deer": "deer",
-        "fish": "fish",
-        "sheep": "sheep",
-        "moose": "moose",
-        "species": "species",
-        "series": "series",
-        "aircraft": "aircraft",
-        "crossroads": "crossroads",
-        "means": "means",
-        "news": "news",
-        "bison": "bison",
-        "salmon": "salmon",
-        "trout": "trout",
-        "swine": "swine",
-        "cattle": "cattle",
-        "pike": "pike",
-        "carp": "carp",
-        "shrimp": "shrimp",
-        "squid": "squid",
-        "cod": "cod",
-        "barracuda": "barracuda",
-        "tuna": "tuna",
-        "shrimp": "shrimp",
-        "plankton": "plankton",
-        // else exceptions
-        "foot": "feet",
-        "tooth": "teeth",
-        "mouse": "mice",
-        "louse": "lice",
-        "person": "people",
-        "child": "children",
-        "ox": "oxen",
-        "man": "men",
-        "woman": "women",
-        "goose": "geese",
-        "die": "dice",
-        "cactus": "cacti",
-        "fungus": "fungi",
-        "nucleus": "nuclei",
-        "focus": "foci",
-        "radius": "radii",
-        "stimulus": "stimuli",
-        "analysis": "analyses",
-        "crisis": "crises",
-        "thesis": "theses",
-        "diagnosis": "diagnoses",
-        "oasis": "oases",
-        "basis": "bases",
-        "appendix": "appendices",
-        "index": "indices",
-        "matrix": "matrices",
-        "vertex": "vertices",
-        "vortex": "vortices",
-        "axis": "axes"
-    }
+import { pluralizeWord } from './pluralJS/plural.js';
 
-    const word = document.getElementById('pluralInput').value.toLowerCase();
-    if (!isLetterOnly(word)) {
+function pluralize() {
+    const word = document.getElementById('pluralInput').value;
+
+    if (!/^[a-zA-Z]+$/.test(word)) {
         show('pluralResult', "Please enter letters only.");
         show('pluralRule', "");
         return;
     }
 
-    let result = "", rule = "";
+    const { plural, rule } = pluralizeWord(word);
 
-    if (exclusives.hasOwnProperty(word)) {
-        result = exclusives[word];
-        rule = `Special case: The plural of <strong>${word}</strong> is <strong>${result}</strong>. <br> <a href="./exclusives/plurals.html">See more exceptions</a>`;
-    } else if (['s','x','z','o'].includes(word.slice(-1))) {
-        result = word + "es";
-        rule = "Add 'es' to words ending in s, x, z, or o.";
-    } else if (word.endsWith('ch') || word.endsWith('sh')) {
-        result = word + "es";
-        rule = "Add 'es' to words ending in 'ch' or 'sh'.";
-    } else if (word.endsWith('y') && vcJudge(word.slice(-2, -1)) === 'c') {
-        result = word.slice(0, -1) + "ies";
-        rule = "Consonant + y becomes 'ies'.";
-    } else if (word.endsWith('f') || word.endsWith('fe')) {
-        if (word.endsWith('fe')) {
-            result = word.slice(0, -2) + "ves";
-        } else {
-            result = word.slice(0, -1) + "ves";
-        }
-        rule = "F or fe becomes 'ves'.";
-    } else {
-        result = word + "s";
-    }
-
-    show('pluralResult', `Plural: <strong>${result}</strong>`);
+    show('pluralResult', `Plural: <strong>${plural}</strong>`);
     show('pluralRule', rule);
 }
