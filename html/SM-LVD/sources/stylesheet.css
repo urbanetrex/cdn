@@ -28,7 +28,7 @@ header {
     padding: 30px;
 }
 
-header .home {
+header .home, header .releases{
     align-self: flex-start;
     margin-top: 0;       /* Remove default spacing above */
     margin-bottom: 10px; /* Keep some space below */
@@ -39,6 +39,10 @@ header .home {
     border-radius: 5px;
     padding: 5px;
     text-decoration: none;
+}
+
+header nav{
+    display: flex; gap: 10px;
 }
 
 h1 {
