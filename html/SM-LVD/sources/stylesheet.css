@@ -91,21 +91,25 @@ button {
 .fire a,
 .fire a:visited {
     color: white;
+    position: relative;
 }
 
 .sun a,
 .sun a:visited {
     color: black;
+    position: relative;
 }
 
 .forest a,
 .forest a:visited {
     color: darkgreen;
+    position: relative;
 }
 
 .space a,
 .space a:visited {
     color: white;
+    position: relative;
 }
 
 /* Optional hover for clarity */
@@ -127,6 +131,9 @@ button {
     border-radius: 3px;
     color: white;
     text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 /*these are clickable...*/
@@ -145,22 +152,28 @@ button {
     cursor: pointer;
 }
 
-/*beauty*/
-.fire a.tryit, .fire a.more-info,
-.sun a.tryit, .sun a.more-info,
-.forest a.tryit, .forest a.more-info,
-.space a.tryit, .space a.more-info {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-
 .result {
     margin-top: 10px;
     font-weight: bold;
 }
 
+button {
+    position: relative;
+    z-index: 1;
+  }
+
+  
 button.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: auto; /* Important: keep events enabled */
 }
+
+.js-edit-box {
+    display: block;
+  }
+
+  .js-edit-box:empty {
+    display: none;
+  }
+  

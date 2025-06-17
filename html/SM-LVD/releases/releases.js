@@ -37,5 +37,15 @@ export const releases = {
             "Added a hint message when you reach the oldest release or newest release.",
             "Buttons are animated when hovered over."
         ]
+    },
+
+    "1.31": {
+        "time-tag": "2025-06-17T20:20:00",
+        "time-text": "June 17, 2025 at 8:20 PM",
+        "features": [
+            "Fixed bug: main page JS loaded content may hide before some other widgets, but now it won't.",
+            "Layout flow remains clean even when the edit box is empty.",
+            "The previous features were untouched and are still present."
+        ]
     }
 }
