@@ -16,33 +16,34 @@
 <body>
     <header>
         <nav>
-            <a class="releases" href="./releases.html">📈Releases</a>
+            <a class="releases" href="./releases/releases.html">📈Releases</a>
         </nav>
         <h1>The ULTIMATE Spelling Rule Applier!!!</h1>
-        <h6>Note: Code has been updated, but still needs more improvements.</h6>
         <noscript>
             <p style="color: red;">JavaScript is required for this tool to work. Please enable JavaScript.</p>
         </noscript>        
     </header>
 
-    <section class="fire" aria-label="Character Classification">
+    <section class="fire" id="prep" aria-label="Character Classification">
         <h2>🔥 Prep Prepares!</h2>
         <p>Character detection – Vowel or Consonant?</p>
         <input type="text" id="charInput" maxlength="1" placeholder="Enter a letter">
         <button id="analyze">Analyze</button>
         <div id="charResult" class="result"></div>
+        <a href="./rules.html#prep" class="more-info">ℹ️More Info</a>
     </section>
 
-    <section class="sun" aria-label="Vowel/Consonant Pattern">
+    <section class="sun" id="vowel-consonant" aria-label="Vowel/Consonant Pattern">
         <h2>🌞 Rocketin' Ahead</h2>
         <p>Vowel/Consonant String Identifier</p>
         <input type="text" id="vcStringInput" placeholder="Enter a string">
         <button id="pattern">Get Pattern</button>
         <div id="vcResult1" class="result"></div>
         <div id="vcResult2" class="result"></div>
+        <a href="./rules.html#vowel-consonant" class="more-info">ℹ️More Info</a>
     </section>
 
-    <section class="forest" aria-label="Morphograph Combiner">
+    <section class="forest" id="morphograph" aria-label="Morphograph Combiner">
         <h2>🌿 Be an Expert</h2>
         <p>Combine Two Morphographs</p>
         <input type="text" id="morph1" placeholder="First morphograph">
@@ -50,15 +51,17 @@
         <button id="combine">Combine</button>
         <div id="combineResult" class="result"></div>
         <div id="combineRule" class="result"></div>
+        <a href="./rules.html#morphograph" class="more-info">ℹ️More Info</a>
     </section>
 
-    <section class="space" aria-label="Pluralization">
+    <section class="space" id="rules" aria-label="Pluralization">
         <h2>🌌 Go Pro!</h2>
         <p>Pluralize a Word</p>
         <input type="text" id="pluralInput" placeholder="Enter a word">
         <button id="pluralize">Pluralize</button>
         <div id="pluralResult" class="result"></div>
         <div id="pluralRule" class="result"></div>
+        <a href="./rules.html#rules" class="more-info">ℹ️More Info</a>
     </section>
 </body>
 </html>

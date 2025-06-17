@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Releases</title>
+    <link rel="stylesheet" href="../sources/stylesheet.css">
+    <link rel="icon" type="image/png" href="../sources/favicon.png" />
+    <style>
+        body {
+            background-image: url('../sources/cloud2a.jpg');
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="home" href="../combine[tools].html">🏠Homepage</a>
+        </nav>
+        <h1>Releases</h1>
+        <noscript>
+            <p style="color: red; padding: 10px;">JavaScript is required to view the release notes.</p>
+        </noscript>        
+    </header>
+    
+    <div class="pages"></div>
+
+    <div class="pagination" style="text-align: center; margin: 20px;">
+        <button id="prev" title="Go to newer releases">⬅ Prev</button>
+        <span id="page-info"></span>
+        <button id="next" title="Go to older releases">Next ➡</button>
+    </div>
+
+
+    <script type="module" src="./coreReleasesJS.js" defer></script>
+</body>
+</html>
