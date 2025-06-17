@@ -47,7 +47,12 @@ function renderPage(page) {
         section.className = theme;
 
         const heading = document.createElement('h2');
-        heading.textContent = `v${version} — ${entry['time-text']}`;
+        //Version latest add <mark>Current</mark> to the latest version
+        if (version === sortedVersions[0]) {
+            heading.innerHTML = `<mark>Current</mark> v${version} — ${entry['time-text']}`;
+        } else {
+            heading.innerHTML = `v${version} — ${entry['time-text']}`;
+        }
         section.appendChild(heading);
 
         const list = document.createElement('ul');
@@ -94,7 +99,6 @@ function showHintMessage(msg) {
     }, 2000);
 }
 
-// Add this logic after event listeners:
 prevBtn.addEventListener('click', () => {
     if (currentPage > 0) {
         currentPage--;

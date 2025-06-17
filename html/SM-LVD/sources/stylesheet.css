@@ -1,3 +1,38 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  .scroll-top {
+    position: fixed;
+    bottom: 150px;
+    right: -150px;
+    color: black;
+    padding: 0.7em 1em;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, right 0.3s ease;
+    z-index: 1001;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #add8e6, #7cfc00, #ffd700, #f08080); /* lightblue, lawngreen, gold, lightcoral */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 150px;
+  }
+  
+  .scroll-top:hover {
+    right: 0px;
+  }
+  
+  .scroll-top.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background-repeat: repeat;
@@ -17,8 +52,6 @@ body::before {
     /* background: rgba(255, 255, 255, 0.5); optional veil */
     z-index: -1;
 }
-
-
 
 header {
     display: flex;
@@ -177,3 +210,13 @@ button.disabled {
     display: none;
   }
   
+footer {
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top: purple solid 5px;
+    padding: 20px;
+    color: white;
+}
+footer a {
+    color: white;
+}

@@ -47,5 +47,15 @@ export const releases = {
             "Layout flow remains clean even when the edit box is empty.",
             "The previous features were untouched and are still present."
         ]
+    },
+
+    "1.4": {
+        "time-tag": "2025-06-18T08:13:11",
+        "time-text": "June 18, 2025 at 8:13 AM",
+        "features": [
+            "Added footer",
+            "Added a scroll to top button",
+            "Updated the footer content for consistency across pages."
+        ]
     }
 }
