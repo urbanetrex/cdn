@@ -57,5 +57,14 @@ export const releases = {
             "Added a scroll to top button",
             "Updated the footer content for consistency across pages."
         ]
+    },
+
+    "1.5": {
+        "time-tag": "2025-06-19T09:00:00",
+        "time-text": "June 19, 2025 at 9:00 AM",
+        "features": [
+            "Footer added live version number.",
+            "The footer stays on the bottom even when the page is short."
+        ]
     }
 }

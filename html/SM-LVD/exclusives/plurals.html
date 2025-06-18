@@ -12,8 +12,10 @@
             }
         </style>
         <script src="../sources/scrollControlJS.js" defer></script>
+        <script type="module" src="../sources/footer_update_version.js" defer></script>
     </head>
     <body>
+        <div class="page-wrapper">
         <header role="banner">
             <nav>
                 <a class="home" href="../combine[tools].html">🏠Homepage</a>
@@ -52,7 +54,7 @@
                 
             </ul>
         </section>
-
+        </div> <!-- Closing the page-wrapper div -->
         <script type="module">
             import { plural_exclusives } from '../sources/pluralJS/exclusives.js';
 
@@ -75,7 +77,7 @@
 
         <footer>
             <p>© 2025 The ULTIMATE Spelling Rule Applier by <a href="https://github.com/urbanetrex">urbanetrex</a>.</p>
-            <p>For more information, visit our <a href="../releases/releases.html">Releases Page</a>.</p>
+            <p>Version <span class="footer-mark-version">Loading/Unknown</span>. For more information, visit our <a href="../releases/releases.html">Releases Page</a>.</p>
             <p>Contribute here on GitHub: <a href="https://github.com/urbanetrex/cdn/tree/main/html/SM-LVD">https://github.com/urbanetrex/cdn/tree/main/html/SM-LVD</a></p>
         </footer>
     </body>

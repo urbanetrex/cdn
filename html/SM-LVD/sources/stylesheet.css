@@ -210,13 +210,24 @@ button.disabled {
     display: none;
   }
   
-footer {
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .page-wrapper {
+    min-height: calc(100vh - 150px); /* subtract your footer height */
+  }
+  
+  footer {
     height: 150px;
     background-color: rgba(0, 0, 0, 0.5);
     border-top: purple solid 5px;
     padding: 20px;
     color: white;
-}
-footer a {
+  }
+  
+  footer a {
     color: white;
-}
+  }
